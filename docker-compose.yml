@@ -1,7 +1,7 @@
 version: "2"
 
 services:
-  api:
+  reviver:
     build: .
     env_file: .env
     environment:
@@ -11,8 +11,6 @@ services:
       - postgres
     depends_on:
       - postgres
-    ports:
-      - "8080:8080"
 
   postgres:
     image: postgres
