@@ -3,10 +3,10 @@ package commands
 import (
 	"fmt"
 	"strconv"
-
+	"strings"
 	"github.com/bwmarrin/discordgo"
+	"github.com/rivo-gg/reviver-go/src/database"
 	"github.com/sirupsen/logrus"
-	"github.com/vcokltfre/reviver/src/database"
 )
 
 var topicCommand = &discordgo.ApplicationCommand{
@@ -19,13 +19,16 @@ var factCommand = &discordgo.ApplicationCommand{
 	Description: "Get a random fact to make chat more active!",
 }
 
-func createTopicEmbed(category database.Category, topic string, id int64) *discordgo.MessageEmbed {
+func createTopicEmbed(category database.Category, topic string, id int64, interaction *discordgo.Interaction) *discordgo.MessageEmbed {
+
+	upperCategory := strings.ToUpper(string(category))
+
 	embed := discordgo.MessageEmbed{
-		Title:       fmt.Sprintf("Here's your random %s:", category),
-		Description: topic,
+		Description: fmt.Sprintf("**%s**", topic),
 		Color:       0x87CEEB,
 		Footer: &discordgo.MessageEmbedFooter{
-			Text: "Topic ID: " + strconv.FormatInt(id, 10),
+			Text: fmt.Sprintf("Requested by %s | %s ID: ", interaction.Member.User.Username, upperCategory) + strconv.FormatInt(id, 10),
+			IconURL: fmt.Sprintf("https://cdn.discordapp.com/avatars/%s/%s.webp", interaction.Member.User.ID, interaction.Member.User.Avatar),
 		},
 	}
 
@@ -49,7 +52,7 @@ func handleTopic(s *discordgo.Session, i *discordgo.InteractionCreate, category 
 		Type: discordgo.InteractionResponseChannelMessageWithSource,
 		Data: &discordgo.InteractionResponseData{
 			Embeds: []*discordgo.MessageEmbed{
-				createTopicEmbed(category, topicValue.Topic, topicValue.ID),
+				createTopicEmbed(category, topicValue.Topic, topicValue.ID, i.Interaction),
 			},
 		},
 	})

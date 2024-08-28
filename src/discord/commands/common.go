@@ -1,6 +1,6 @@
 package commands
 
-import "github.com/vcokltfre/reviver/src/discord/impl"
+import "github.com/rivo-gg/reviver-go/src/discord/impl"
 
 type CommandError struct {
 	Command string

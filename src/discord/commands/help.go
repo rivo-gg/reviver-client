@@ -9,37 +9,15 @@ import (
 
 const (
 	help  = "help"
-	topic = "cmd_topic"
-	fact  = "cmd_fact"
 )
 
 var commandHelpMap = map[string]string{
-	help:  "https://docs.reviverbot.com/commands",
-	topic: "https://docs.reviverbot.com/command/topic",
-	fact:  "https://docs.reviverbot.com/command/fact",
+	help:  "https://reviverbot.com/commands",
 }
 
 var helpCommand = &discordgo.ApplicationCommand{
 	Name:        "help",
 	Description: "Displays command help information.",
-	Options: []*discordgo.ApplicationCommandOption{
-		{
-			Name:        "command",
-			Description: "The command to get help for.",
-			Type:        discordgo.ApplicationCommandOptionString,
-			Required:    false,
-			Choices: []*discordgo.ApplicationCommandOptionChoice{
-				{
-					Name:  "Topic",
-					Value: topic,
-				},
-				{
-					Name:  "Fact",
-					Value: fact,
-				},
-			},
-		},
-	},
 }
 
 func handleHelpCommand(s *discordgo.Session, i *discordgo.InteractionCreate) {

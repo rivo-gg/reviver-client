@@ -1,4 +1,4 @@
-module github.com/vcokltfre/reviver
+module github.com/rivo-gg/reviver-go
 
 go 1.18
 

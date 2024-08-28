@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/vcokltfre/reviver/src/database"
+	"github.com/rivo-gg/reviver-go/src/database"
 )
 
 type Topic struct {

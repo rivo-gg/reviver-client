@@ -3,9 +3,8 @@ package database
 import (
 	"encoding/json"
 	"os"
-
+	"github.com/rivo-gg/reviver-go/src/util"
 	"github.com/sirupsen/logrus"
-	"github.com/vcokltfre/reviver/src/util"
 )
 
 type Category string
@@ -63,7 +62,7 @@ func LoadGlobalTopics() ([]GlobalTopic, error) {
 }
 
 func PopulateGlobalTopics() error {
-	data, err := os.ReadFile("data/topics.json")
+	data, err := os.ReadFile("data/data.json")
 	if err != nil {
 		return err
 	}

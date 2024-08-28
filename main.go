@@ -4,9 +4,9 @@ import (
 	"os"
 	"os/signal"
 
+	"github.com/rivo-gg/reviver-go/src/database"
+	"github.com/rivo-gg/reviver-go/src/discord"
 	"github.com/sirupsen/logrus"
-	"github.com/vcokltfre/reviver/src/database"
-	"github.com/vcokltfre/reviver/src/discord"
 )
 
 func init() {

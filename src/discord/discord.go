@@ -4,10 +4,10 @@ import (
 	"os"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/rivo-gg/reviver-go/src/discord/commands"
+	"github.com/rivo-gg/reviver-go/src/discord/impl"
 	"github.com/servusdei2018/shards"
 	"github.com/sirupsen/logrus"
-	"github.com/vcokltfre/reviver/src/discord/commands"
-	"github.com/vcokltfre/reviver/src/discord/impl"
 )
 
 func onConnect(s *discordgo.Session, evt *discordgo.Connect) {
