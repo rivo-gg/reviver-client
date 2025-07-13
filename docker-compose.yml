@@ -5,6 +5,8 @@ services:
     build: .
     env_file: 
     - .env
+    environment:
+      DB_DSN: postgresql://reviver:${POSTGRES_PASSWORD}@postgres:5432/reviver
     restart: always
     links:
       - postgres
