@@ -1,18 +1,4 @@
-version: "2"
-
 services:
-  reviver:
-    build: .
-    env_file: 
-    - .env
-    environment:
-      DB_DSN: postgresql://reviver:${POSTGRES_PASSWORD}@postgres:5432/reviver
-    restart: always
-    links:
-      - postgres
-    depends_on:
-      - postgres
-
   postgres:
     image: postgres
     restart: always
@@ -25,3 +11,14 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - ./pg_data:/var/lib/postgresql/data
+  reviver:
+    build: .
+    env_file: 
+    - .env
+    environment:
+      DB_DSN: postgresql://reviver:${POSTGRES_PASSWORD}@postgres:5432/reviver
+    restart: always
+    links:
+      - postgres
+    depends_on:
+      - postgres
