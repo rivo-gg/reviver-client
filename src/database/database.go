@@ -18,7 +18,7 @@ func GetDB() {
 
 	logrus.Info("Connecting to database: ", dsn)
 
-	db, err := gorm.Open(postgres.Open(os.Getenv("DB_DSN")))
+	db, err := gorm.Open(postgres.Open(dsn))
 	if err != nil {
 		panic(err)
 	}
